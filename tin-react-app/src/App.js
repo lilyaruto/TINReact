@@ -7,6 +7,9 @@ import MainContent from './components/fragments/MainContent';
 import ManufacturerList from './components/manufacturer/ManufacturerList';
 import ManufacturerDetails from './components/manufacturer/ManufacturerDetails';
 import ManufacturerForm from './components/manufacturer/ManufacturerForm';
+import ModelList from './components/model/ModelList';
+import ModelDetails from './components/model/ModelDetails';
+import ModelForm from './components/model/ModelForm';
 import {Routes, Route } from 'react-router-dom';
 
 
@@ -22,6 +25,12 @@ function App() {
           <Route path='details/:manId' element={<ManufacturerDetails />} />
           <Route path='add' element={<ManufacturerForm />} />
           <Route path='modify/:manId' element={<ManufacturerForm />} />
+        </Route>
+        <Route path='/model'>
+          <Route index={true} element={<ModelList />} />
+          <Route path='details/:modId' element={<ModelDetails />} />
+          <Route path='add' element={<ModelForm />} />
+          <Route path='modify/:modId' element={<ModelForm />} />
         </Route>
       </Routes>
       <Footer />

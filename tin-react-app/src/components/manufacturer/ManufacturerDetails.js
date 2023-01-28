@@ -11,7 +11,7 @@ function ManufacturerDetails() {
         <main>
             <h2>Manufacturer details</h2>
             <form className="form" method="post" action="<%= formAction %>">
-                <input type="hidden" name="_id" value="<%= mainMan._id %>" />
+                <input type="hidden" name="_id" value="" />
                 <label for="details_manufacurer-id">
                     ID:
                     <input disabled className="details_manufacurer-id" type="text" value={`${man._id}`} />

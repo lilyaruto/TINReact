@@ -11,7 +11,7 @@ function ManufacturerForm() {
                 <input type="hidden" name="_id" value="" />
                 <label for="add_manufacurer-name">
                     Name:<span class="mandatory_field">*</span>
-                    <input class="add_manufacurer-name" name="name" type="text" placeholder="2-60 characters" value="" />
+                    <input class="add_manufacurer-name" name="name" type="text" value={this} onChange={this} placeholder="2-60 characters" />
                     <div id="name_error" class="error_msg">
 
                     </div>
@@ -27,7 +27,7 @@ function ManufacturerForm() {
                 </label>
                 <label for="add_manufacurer-logo">
                     Logo link:<span class="mandatory_field">*</span>
-                    <input name="logo" class="add_manufacurer-logo" type="text" placeholder="300 characters" value="" />
+                    <input name="logo" class="add_manufacurer-logo" type="text" placeholder="300 characters" value={this} onChange={this} />
                     <div id="logo_error" class="error_msg">
 
                     </div>
