@@ -17,6 +17,10 @@ import AddressList from './components/address/AddressList';
 import AddressDetails from './components/address/AddressDetails';
 import AddressForm from './components/address/AddressForm';
 
+import DepartmentList from './components/department/DepartmentList';
+import DepartmentDetails from './components/department/DepartmentDetails';
+import DepartmentForm from './components/department/DepartmentForm';
+
 import {Routes, Route } from 'react-router-dom';
 
 
@@ -44,6 +48,12 @@ function App() {
           <Route path='details/:adrId' element={<AddressDetails />} />
           <Route path='add' element={<AddressForm />} />
           <Route path='modify/:adrId' element={<AddressForm />} />
+        </Route>
+        <Route path='/department'>
+          <Route index={true} element={<DepartmentList />} />
+          <Route path='details/:depId' element={<DepartmentDetails />} />
+          <Route path='add' element={<DepartmentForm />} />
+          <Route path='modify/:depId' element={<DepartmentForm />} />
         </Route>
       </Routes>
       <Footer />
