@@ -1,0 +1,37 @@
+<%- include('../../fragment/header.ejs') %>
+        <div class="main_content">
+            <div id="department-add-row_submit" class="submit_msg"></div>
+            <div class="main_content_buttons">
+                <input class="retrieving_button" type="button" value="Retrieve a list">
+                <a href="/department/add-department">
+                    <input class="add-element_button" type="button" value="Add element">
+                </a>
+            </div>
+            <div class="database">
+                <table class="table_database" id="table_database_department">
+                    <tr class="table_database-headers">
+                        <th class="table_database-header">Manufacturer</th>
+                        <th class="table_database-header">Number of employees</th>
+                        <th class="table_database-header">Manager name</th>
+                        <th class="table_database-header">Foundation date</th>
+                        <th class="table_database-header">Action</th>
+                    </tr>
+                    <% for (let dep of deps) { %>
+                        <tr class="table_database-row">
+                            <td class="table_database-data"><%= dep.manufacturer.name %></td>
+                            <td class="table_database-data"><%= dep.employeesNumber %></td>
+                            <td class="table_database-data"><%= dep.managerName %></td>
+                            <td class="table_database-data"><%= dep.foundationDate %></td>
+                            <td class="table_database-data" id="table_buttons">
+                                <ul class="list-actions">
+                                    <a href="/department/details/<%= dep._id %>" class="details_button link_button">Details</a>
+                                    <a href="/department/modify/<%= dep._id %>" class="modify_button link_button">Modify</a>
+                                    <a href="/department/delete/<%= dep._id %>" class="remove_button link_button">Remove</a>
+                                </ul>
+                            </td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+<%- include('../../fragment/footer.ejs') %>

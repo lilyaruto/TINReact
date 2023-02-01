@@ -1,0 +1,48 @@
+<%- include('../../fragment/header.ejs') %>
+        <div class="main_content" id="main_content_add-manufacturer">
+            <h1 class="main_content_title">New address</h1>
+            <form id="form" class="add_row" method="post" action="<%= formAction %>" novalidate>
+                <input type="hidden" name="_id" value="<%= mainAdr._id %>">
+                <label for="add_address-city">
+                    City:<span class="mandatory_field">*</span>
+                    <input name="city" class="add_address-city" type="text" placeholder="2-60 characters" value="<%= mainAdr.city %>">
+                    <div id="city_error" class="error_msg">
+                        <% if (validationErrors.find(e => e.path.includes('city'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('city')).message %>
+                        <% } %>
+                    </div>
+                </label>
+                <label for="add_address-street">
+                    Street:<span class="mandatory_field">*</span>
+                    <input name="street" class="add_address-street" type="text" placeholder="2-100 characters" value="<%= mainAdr.street %>">
+                    <div id="street_error" class="error_msg">
+                        <% if (validationErrors.find(e => e.path.includes('street'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('street')).message %>
+                        <% } %>
+                    </div>
+                </label>
+                <label for="add_address-building">
+                    Building:<span class="mandatory_field">*</span>
+                    <input name="building" class="add_address-building" type="text" placeholder="1-10 characters" value="<%= mainAdr.building %>">
+                    <div id="building_error" class="error_msg">
+                        <% if (validationErrors.find(e => e.path.includes('building'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('building')).message %>
+                        <% } %>
+                    </div>
+                </label>
+                <label for="add_address-postcode">
+                    Postcode:<span class="mandatory_field">*</span>
+                    <input name="index" class="add_address-postcode" type="text" placeholder="1-10 characters" value="<%= mainAdr.index %>">
+                    <div id="postcode_error" class="error_msg">
+                        <% if (validationErrors.find(e => e.path.includes('index'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('index')).message %>
+                        <% } %>
+                    </div>
+                </label>
+                <div class="form_buttons">
+                    <input class="form_button" id="form_button_add" type="submit" value="Add">
+                </div>
+            </form>
+            <div id="address-add-row_submit" class="submit_msg"></div>
+        </div>
+<%- include('../../fragment/footer.ejs') %>

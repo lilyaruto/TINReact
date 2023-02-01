@@ -1,0 +1,31 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%= formAction %>">
+        <input type="hidden" name="_id" value="<%= mainMod._id %>">
+        <label for="details_model-id">
+            ID:
+            <input disabled name="_id" class="details_model-id" type="text" value="<%= mainMod._id %>">
+        </label>
+        <label for="details_model-name">
+            Name:
+            <input disabled name="name" class="details_model-name" type="text" value="<%= mainMod.name %>">
+        </label>
+        <label for="details_model-manufacturer">
+            Manufacturer:
+            <select disabled name="man_id" id="add_manufacurer">
+                <%
+                    for (let man of allMans) { %>
+                            <option selected value="<%= mainMod.man_id %>"><%= mainMod.manufacturer.name %></option>
+                        <% } %>
+                    }
+                %>
+            </select>
+        </label>
+        <label for="details_model-generation">
+            Generation:
+            <input disabled name="generation" class="details_model-generation" type="number" value="<%= mainMod.generation %>">
+        </label>
+    </form>
+</main>
+<%- include('../../fragment/footer.ejs') %>

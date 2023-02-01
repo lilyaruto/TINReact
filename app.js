@@ -16,6 +16,10 @@ var depApiRouter = require('./routes/api/DepartmentApiRoute');
 var adrsApiRouter = require('./routes/api/AddressApiRoute');
 
 var app = express();
+var cors = require('cors');
+
+//Cross-Origin Resource Sharing
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

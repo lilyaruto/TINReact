@@ -1,0 +1,43 @@
+<%- include('../../fragment/header.ejs') %>
+        <div class="main_content" id="main_content_add-manufacturer">
+            <h2><%= pageTitle %></h2>
+            <form id="form" class="add_row" method="post" action="<%= formAction %>" novalidate>
+                <input type="hidden" name="_id" value="<%= mainMan._id %>">
+                <label for="add_manufacurer-name">
+                    Name:<span class="mandatory_field">*</span>
+                    <input class="add_manufacurer-name" name="name" type="text" placeholder="2-60 characters" value="<%= mainMan.name %>">
+                    <div id="name_error" class="error_msg">
+                        <% if (validationErrors.find(e => e.path.includes('name'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('name')).message %>
+                        <% } %>
+                    </div>
+                </label>
+                <label for="add_manufacurer-child-company">
+                    Parent company:
+                    <select name="parentCompany" id="add_manufacurer-child-company">
+                        <option value="0">---NULL---</option>
+                        <%
+                            for (let man of allMans) { %>
+                                %><% if (man._id != mainMan._id) { %>
+                                    <option value="<%= man._id %>"><%= man.name %></option>
+                                <% } %><%
+                            }
+                        %>
+                    </select>
+                </label>
+                <label for="add_manufacurer-logo">
+                    Logo link:<span class="mandatory_field">*</span>
+                    <input name="logo" class="add_manufacurer-logo" type="text" placeholder="300 characters" value="<%= mainMan.logo %>">
+                    <div id="logo_error" class="error_msg">
+                        <% if (validationErrors.find(e => e.path.includes('logo'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('logo')).message %>
+                        <% } %>
+                    </div>
+                </label>
+                <div class="form_buttons">
+                    <input class="form_button" id="form_button_add" type="submit" value="<%= btnLabel %>">
+                </div>
+            </form>
+            <div id="manufacturer-add-row_submit" class="submit_msg"></div>
+        </div>
+<%- include('../../fragment/footer.ejs') %>

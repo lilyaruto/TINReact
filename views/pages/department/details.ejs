@@ -1,0 +1,48 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%= formAction %>">
+        <input type="hidden" name="_id" value="<%= mainDep._id %>">
+        <label for="details_department-employees-number">
+            ID:
+            <input disabled name="_id" class="details_department-employees-number" type="number" value="<%= mainDep._id %>">
+        </label>
+        <label for="details_department-manufacturer">
+            Manufacturer:
+            <select disabled name="man_id" id="details_department-manufacturer">
+                <%
+                    for (let man of allMans) { %>
+                        <option selected value="<%= mainDep.man_id %>"><%= mainDep.manufacturer.name %></option>
+                    <%}
+                %>
+            </select>
+        </label>
+        <label for="details_department-address">
+            Address:
+            <select disabled name="adrs_id" id="details_department-address">
+                <%
+                    for (let adr of allAdrs) { %>
+                            <option value="<%= mainDep.adr_id %>"><%= mainDep.address.city + ", " + mainDep.address.street + " " + mainDep.address.building %></option>
+                    <%}
+                %>
+            </select>
+        </label>
+        <label for="details_department-employees-number">
+            Number of employees:
+            <input disabled name="employeesNumber" class="details_department-employees-number" type="number" value="<%= mainDep.employeesNumber %>">
+        </label>
+        <label for="details_department-manager-name">
+            Manager's name and surname:
+            <input disabled name="managerName" class="details_department-manager-name" type="text" value="<%= mainDep.managerName %>">
+        </label>
+        <label for="details_department-foundation-date">
+            Foundation date:
+            <input disabled name="foundationDate" class="details_department-foundation-date" type="date" value="<%= mainDep.foundationDate %>">
+        </label>
+        <label for="details_department-info">
+            Info:
+            <textarea  disabled name="info" class="details_department-info" rows="6" cols="50"><%= mainDep.info %></textarea>
+        </label>
+    </form>
+</main>
+<%- include('../../fragment/footer.ejs') %>

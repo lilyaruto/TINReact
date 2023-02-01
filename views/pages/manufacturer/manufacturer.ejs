@@ -1,0 +1,35 @@
+<%- include('../../fragment/header.ejs') %>
+        <div class="main_content">
+            <div id="manufacturer-add-row_submit" class="submit_msg"></div>
+            <div class="main_content_buttons">
+                <input class="retrieving_button" type="button" value="Retrieve a list">
+                <a href="/manufacturer/add-manufacturer">
+                    <input class="add-element_button" type="button" value="Add element">
+                </a>
+            </div>
+            <div class="database">
+                <table class="table_database" id="table_database_manufacturer">
+                    <tr class="table_database-headers">
+                        <th class="table_database-header">Name</th>
+                        <th class="table_database-header" id="table_database-header-logo">Logo</th>
+                        <th class="table_database-header">Action</th>
+                    </tr>
+                    <% for (let man of mans) { %>
+                        <tr class="table_database-row">
+                            <td class="table_database-data"><%= man.name %></td>
+                            <td class="table_database-data">
+                                <img id="table_database-data-logo" src="<%= man.logo %>" alt="">
+                            </td>
+                            <td class="table_database-data" id="table_buttons">
+                                <ul class="list-actions">
+                                    <a href="/manufacturer/details/<%= man._id %>" class="details_button link_button">Details</a>
+                                    <a href="/manufacturer/modify/<%= man._id %>" class="modify_button link_button">Modify</a>
+                                    <a href="/manufacturer/delete/<%= man._id %>" class="remove_button link_button">Remove</a>
+                                </ul>
+                            </td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+<%- include('../../fragment/footer.ejs') %>

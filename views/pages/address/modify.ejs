@@ -1,0 +1,48 @@
+<%- include('../../fragment/header.ejs') %>
+    <main>
+    <h2><%= pageTitle %></h2>
+        <form class="form" method="post" action="<%= formAction %>" novalidate>
+            <input type="hidden" name="_id" value="<%= adr._id %>">
+            <label for="modify_address-city">
+                City:<span class="mandatory_field">*</span>
+                <input name="city" class="modify_address-city" type="text" placeholder="2-60 characters" value="<%= adr.city %>">
+                <div id="city_error" class="error_msg">
+                    <% if (validationErrors.find(e => e.path.includes('city'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('city')).message %>
+                    <% } %>
+                </div>
+            </label>
+            <label for="modify_address-street">
+                Street:<span class="mandatory_field">*</span>
+                <input name="street" class="modify_address-street" type="text" placeholder="2-100 characters" value="<%= adr.street %>">
+                <div id="street_error" class="error_msg">
+                    <% if (validationErrors.find(e => e.path.includes('street'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('street')).message %>
+                    <% } %>
+                </div>
+            </label>
+            <label for="modify_address-building">
+                Building:<span class="mandatory_field">*</span>
+                <input name="building" class="modify_address-building" type="text" placeholder="1-10 characters" value="<%= adr.building %>">
+                <div id="building_error" class="error_msg">
+                    <% if (validationErrors.find(e => e.path.includes('building'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('building')).message %>
+                    <% } %>
+                </div>
+            </label>
+            <label for="modify_address-postcode">
+                Postcode:<span class="mandatory_field">*</span>
+                <input name="index" class="modify_address-postcode" type="text" placeholder="1-10 characters" value="<%= adr.index %>">
+                <div id="postcode_error" class="error_msg">
+                    <% if (validationErrors.find(e => e.path.includes('index'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('index')).message %>
+                    <% } %>
+                </div>
+            </label>
+            <div class="form_buttons">
+                <input class="form_button" id="form_button_modify" type="submit" value="<%= btnLabel %>">
+            </div>
+        </form>
+    <div id="address-add-row_submit" class="submit_msg"></div>
+</main>
+<%- include('../../fragment/footer.ejs') %>

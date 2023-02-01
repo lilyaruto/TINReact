@@ -1,0 +1,36 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%= formAction %>">
+        <input type="hidden" name="_id" value="<%= mainMan._id %>">
+        <label for="details_manufacurer-id">
+            ID:
+            <input disabled class="details_manufacurer-id" type="text" value="<%= mainMan._id %>">
+        </label>
+        <label for="details_manufacurer-name">
+            Name:
+            <input disabled class="details_manufacurer-name" type="text" value="<%= mainMan.name %>">
+        </label>
+        <label for="details_manufacurer-child-company">
+            Parent company:
+            <select name="" id="details_manufacurer-child-company" disabled>
+                <option value="0">---NULL---</option>
+                <%
+                    for (let man of allMans) {
+                        %><% if (man._id === mainMan.parentCompany) { %>
+                            <option selected value="<%= man._id %>"><%= man.name %></option>
+                            <% break; %>
+                        <% } else { %>
+                            <option selected value="0">---NULL---</option>>
+                        <% } %><%
+                    }
+                %>
+            </select>
+        </label>
+        <label for="details_manufacurer-logo">
+            Logo link:
+            <input disabled class="details_manufacurer-logo" type="text" value="<%= mainMan.logo %>">
+        </label>
+    </form>
+</main>
+<%- include('../../fragment/footer.ejs') %>

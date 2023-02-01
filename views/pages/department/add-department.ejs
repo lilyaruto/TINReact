@@ -1,0 +1,65 @@
+<%- include('../../fragment/header.ejs') %>
+        <div class="main_content" id="main_content_add-manufacturer">
+            <h2><%= pageTitle %></h2>
+            <form id="form" class="add_row" method="post" action="<%= formAction %>" novalidate>
+                <input type="hidden" name="_id" value="<%= mainDep._id %>">
+                <label for="add_department-manufacturer">
+                    Manufacturer:<span class="mandatory_field">*</span>
+                    <select name="man_id" id="add_department-manufacturer">
+                        <%
+                            for (let man of allMans) { %>
+                                    <option value="<%= man._id %>"><%= man.name %></option>
+                            <%}
+                        %>
+                    </select>
+                    <div id="manufacturer_error" class="error_msg"></div>
+                </label>
+                <label for="add_department-address">
+                    Address:<span class="mandatory_field">*</span>
+                    <select name="adrs_id" id="add_department-address">
+                        <%
+                            for (let adr of allAdrs) { %>
+                                    <option value="<%= adr._id %>"><%= adr.city + ", " + adr.street + " " + adr.building %></option>
+                            <%}
+                        %>
+                    </select>
+                    <div id="address_error" class="error_msg"></div>
+                </label>
+                <label for="add_department-employees-number">
+                    Number of employees:<span class="mandatory_field">*</span>
+                    <input name="employeesNumber" class="add_department-employees-number" type="number" value="<%= mainDep.employeesNumber %>">
+                    <div id="employees-number_error" class="error_msg">
+                        <% if (validationErrors.find(e => e.path.includes('employeesNumber'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('employeesNumber')).message %>
+                        <% } %>
+                    </div>
+                </label>
+                <label for="add_department-manager-name">
+                    Manager's name and surname:<span class="mandatory_field">*</span>
+                    <input name="managerName" class="add_department-manager-name" type="text" placeholder="Name Surname" value="<%= mainDep.managerName %>">
+                    <div id="manager-name_error" class="error_msg">
+                        <% if (validationErrors.find(e => e.path.includes('managerName'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('managerName')).message %>
+                        <% } %>
+                    </div>
+                </label>
+                <label for="add_department-foundation-date">
+                    Foundation date:<span class="mandatory_field">*</span>
+                    <input name="foundationDate" class="add_department-foundation-date" type="date" value="<%= mainDep.foundationDate %>">
+                    <div id="foundation-date_error" class="error_msg">
+                        <% if (validationErrors.find(e => e.path.includes('foundationDate'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('foundationDate')).message %>
+                        <% } %>
+                    </div>
+                </label>
+                <label for="add_department-info">
+                    Info:
+                    <textarea name="info" class="add_department-info" rows="6" cols="50" value="<%= mainDep.info %>"></textarea>
+                </label>
+                <div class="form_buttons">
+                    <input class="form_button" id="form_button_add" type="submit" value="Add">
+                </div>
+            </form>
+            <div id="department-add-row_submit" class="submit_msg"></div>
+        </div>
+<%- include('../../fragment/footer.ejs') %>

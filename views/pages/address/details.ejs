@@ -1,0 +1,28 @@
+<%- include('../../fragment/header.ejs') %>
+<main>
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%= formAction %>">
+        <input type="hidden" name="_id" value="<%= adr._id %>">
+        <label for="details_address-city">
+            ID:
+            <input disabled name="_id" class="details_address-city" type="text" value="<%= adr._id %>">
+        </label>
+        <label for="details_address-city">
+            City:
+            <input disabled name="city" class="details_address-city" type="text" value="<%= adr.city %>">
+        </label>
+        <label for="details_address-street">
+            Street:
+            <input disabled name="street" class="details_address-street" type="text" value="<%= adr.street %>">
+        </label>
+        <label for="details_address-building">
+            Building:
+            <input disabled name="building" class="details_address-building" type="text" value="<%= adr.building %>">
+        </label>
+        <label for="details_address-postcode">
+            Postcode:
+            <input disabled name="index" class="details_address-postcode" type="text" value="<%= adr.index %>">
+        </label>
+    </form>
+</main>
+<%- include('../../fragment/footer.ejs') %>

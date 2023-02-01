@@ -1,0 +1,35 @@
+<%- include('../../fragment/header.ejs') %>
+        <div class="main_content">
+            <div id="model-add-row_submit" class="submit_msg"></div>
+            <div class="main_content_buttons">
+                <input class="retrieving_button" type="button" value="Retrieve a list">
+                <a href="/model/add-model">
+                    <input class="add-element_button" type="button" value="Add element">
+                </a>
+            </div>
+            <div class="database">
+            <div class="database">
+                <table class="table_database" id="table_database_model">
+                    <tr class="table_database-headers">
+                        <th class="table_database-header">Manufacturer</th>
+                        <th class="table_database-header">Name</th>
+                        <th class="table_database-header">Generation</th>
+                        <th class="table_database-header">Action</th>
+                    </tr>
+                    <% for (let mod of mods) { %>
+                        <tr class="table_database-row">
+                            <td class="table_database-data"><%= mod.manufacturer.name %></td>
+                            <td class="table_database-data"><%= mod.name %></td>
+                            <td class="table_database-data"><%= mod.generation %></td>
+                            <td class="table_database-data" id="table_buttons">
+                                <ul class="list-actions">
+                                    <a href="/model/details/<%= mod._id %>" class="details_button link_button">Details</a>
+                                    <a href="/model/modify/<%= mod._id %>" class="modify_button link_button">Modify</a>
+                                    <a href="/model/delete/<%= mod._id %>" class="remove_button link_button">Remove</a>
+                                </ul>
+                            </td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+<%- include('../../fragment/footer.ejs') %>
